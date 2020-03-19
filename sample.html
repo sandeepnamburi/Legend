@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Caption Generator</title>
+</head>
+
+<body>
+    <form id="query">
+        <label for="depart">
+            <span></span>
+            <input type="text" id="link" placeholder="Link to an image"/>
+        </label>
+        <button type="button" onclick=getEmotions() id="link">Submit</button>
+    </form>
+
+    <p id="captions"></p>
+
+    <!-- <form method='post' action='/upload' enctype='multipart/form-data'>
+        <input type='file' name='image' />
+        <input type='submit' />
+    </form> -->
+
+    <script type="text/javascript">
+        function getEmotions() {
+            var ln = document.getElementById("link").value;
+            var data = new FormData();
+            data.append("link", ln);
+
+            fetch("/home", {
+                method: "POST",
+                body: data
+            }).then(function (response) {
+                return response.text();
+            }).then(function (body) {
+                document.getElementById("captions").innerHTML = body;
+            });
+        }
+    </script>
+</body>
+
+</html>

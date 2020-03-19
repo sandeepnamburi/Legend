@@ -1,2 +1,2 @@
-# Legend
-Generate Instagram captions using Machine Learning
+# caption-generator
+Website that generates captions based on a given picture
